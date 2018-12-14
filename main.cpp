@@ -68,6 +68,21 @@ void p_img(int i){
     cout<<'i';
 }
 
+double magnitude(int i){
+    double v = out[i].real * out[i].real + out[i].img * out[i].img;
+    return sqrt(v);
+}
+
+double phase(int i){
+    if(!out[i].real)
+        return 90;
+
+    if(!out[i].img)
+        return 0;
+
+    return atan(out[i].img / out[i].real) * 180 / pi;
+}
+
 void print_omegas(){
     for(int i = 0; i <= n*n; i++){
         if(pre_clc)
@@ -94,7 +109,6 @@ int main()
         }
     }
 
-    print_omegas();
     cout << "X[K] = {";
     for(int i = 0; i < n; i++){
         p_real(i);
@@ -102,5 +116,14 @@ int main()
         p_img(i);
         cout << (i < n-1 ? ", " : "}\n") ;
     }
+
+    cout << "Magnitude of x[k] ( |X[K]| ) = {";
+    for(int i = 0; i < n; i++)
+        cout << magnitude(i) << (i < n-1 ? ", " : "}\n") ;
+
+    cout << "Phase of x[k] = {";
+    for(int i = 0; i < n; i++)
+        cout << phase(i) << (i < n-1 ? ", " : "}\n") ;
+
     return 0;
 }
