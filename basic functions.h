@@ -64,9 +64,12 @@ void p_real(my_complex x){
 }
 
 void p_sign(my_complex x){
-    if(!x.real || !x.img)
+    if(!x.real && !x.img)
+        cout<<0;
+    else if(!x.real || !x.img)
         return ;
-    cout << (x.img >= 0 ? " + " : " - ");
+    else
+    	cout << (x.img >= 0 ? " + " : " - ");
 }
 
 void p_img(my_complex x){
