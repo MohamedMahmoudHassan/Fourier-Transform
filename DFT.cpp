@@ -6,16 +6,8 @@ using namespace std;
 const int N = 1e3+5;
 
 int n;
-bool pre_clc[N*N];
 
-my_complex in[N], out[N], omegas[N*N];
-
-void print_omegas(){
-    for(int i = 0; i <= n*n; i++){
-        if(pre_clc)
-            cout << i << ' ' << omegas[i].real << ' ' << omegas[i].img << endl;
-    }
-}
+my_complex in[N], out[N];
 
 int main()
 {
@@ -29,7 +21,7 @@ int main()
 
     for(int i = 0; i < n; i++){
         for(int j = 0; j < n; j++){
-            my_complex omega = clc_omega(i * j, pre_clc, omegas, n);
+            my_complex omega = clc_omega(i * j, n);
             my_complex term = complex_multiplication(omega, in[j]);
 
             out[i] = complex_addation(out[i], term);

@@ -49,16 +49,12 @@ double circular_functions(double angle, int type){
     return -sin(angle * pi / 180);
 }
 
-my_complex clc_omega(int c, bool pre_clc[], my_complex omega[], int n){
+my_complex clc_omega(int c, int n){
 
     c %= n;
-    if(pre_clc[c])
-        return omega[c];
-
-    pre_clc[c] = 1;
 
     double angle = 360.0 * c / n;
-    return omega[c] = {circular_functions(angle, 1), circular_functions(angle, 0)};
+    return {circular_functions(angle, 1), circular_functions(angle, 0)};
 }
 
 void p_real(my_complex x){
